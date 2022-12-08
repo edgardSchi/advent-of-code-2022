@@ -5,7 +5,8 @@ import Data.Maybe (fromMaybe)
 marker :: String -> Int -> Int
 marker s markerSize = f s markerSize
     where f :: String -> Int -> Int
-          f string i = if nub (take markerSize string) == take markerSize string then i else f (tail string) (i+1)
+          f string i = let list = take markerSize string 
+                        in if nub list == list then i else f (tail string) (i+1)
 
 readInput :: IO String
 readInput = readFile "input"
